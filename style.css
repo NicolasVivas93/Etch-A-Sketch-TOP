@@ -2,17 +2,15 @@ button {
     margin-bottom: 15px;
 }
 
-.container {
+.gridContainer {
     border: 1px solid red;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     width: 960px;
 }
 
-.box {
+.item {
     border: 1px solid blue;
-    flex: 1 1 6%;
-    height: 45px;
+    height: 30px;
 }
 
 .change {
