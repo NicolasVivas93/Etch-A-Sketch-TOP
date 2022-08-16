@@ -1,4 +1,4 @@
-const container = document.querySelector(".container")
+const container = document.querySelector(".gridContainer")
 
 let squaresNum = 16;
 createGrid(squaresNum)
@@ -6,28 +6,28 @@ createGrid(squaresNum)
 function createGrid(num) {
     for (let i = 1; i <= (num * num); i++) {
         const divsGrid = document.createElement('div')
-        divsGrid.classList.toggle("box");
-        divsGrid.innerText = "dada" 
+        divsGrid.classList.add("item");
+        container.style.setProperty("grid-template-columns", `repeat(${num}, auto)`) 
         container.appendChild(divsGrid);
     }
+    paintBox()
 }
-
-
-const childs = document.querySelectorAll(".box")
-console.log(childs)
 
 const button = document.querySelector('button');
 button.addEventListener('click', () => {
-    childs.forEach(child => {
-        container.removeChild(child)
-    })
+    container.innerHTML = ""
     squaresNum = prompt("Squares per side: ")
-    createGrid(squaresNum)
+    if (squaresNum <= 100) {
+        createGrid(squaresNum)        
+    } else {
+        alert("Squares must be less than 100")
+    }
 });
 
-
-const boxes = document.querySelectorAll(".box");
-boxes.forEach(box => box.addEventListener("mouseover", () => {
-    box.classList.add("change")
-}));
+function paintBox() {
+    const boxes = document.querySelectorAll(".item");
+    boxes.forEach(box => box.addEventListener("mouseover", () => {
+        box.classList.add("change")
+    }));    
+}
 
